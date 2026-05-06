@@ -600,30 +600,54 @@ section { padding: 6rem 2rem; position: relative; }
   background: #000;
   pointer-events: all;
   opacity: 1;
-  transition: none;
+  transition: opacity 0.5s ease;
 }
 .preloader-content {
   position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
 }
-.preloader-spinner-hidden .preloader-content {
-  display: none;
-}
-.preloader-loaded {
-  opacity: 0;
-  pointer-events: none;
-}
-.preloader-hidden { display: none !important; }
+.preloader-hidden { opacity: 0; pointer-events: none; }
 
-.spinner-ring {
-  width: 32px; height: 32px;
-  border: 3px solid rgba(255, 255, 255, 0.15);
-  border-top-color: #ffffff;
-  border-radius: 50%;
-  animation: spin-ring 0.8s linear infinite;
+.render-text {
+  font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700;
+  color: var(--accent-cyan); margin-bottom: 15px; letter-spacing: 2px;
+  animation: pulse-dot 1s infinite;
 }
-@keyframes spin-ring {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.render-bar-container {
+  width: 250px; height: 4px; background: rgba(255,255,255,0.1); 
+  border-radius: 4px; overflow: hidden; position: relative;
+}
+.render-bar-fill {
+  width: 0%; height: 100%; background: var(--gradient-hero);
+  box-shadow: 0 0 10px var(--accent-purple);
+  transition: width 0.2s ease-out;
+}
+
+/* ===== EDITING TIMELINE ===== */
+.editing-timeline {
+  position: fixed; top: 0; left: 30px; bottom: 0; width: 20px; z-index: 99;
+  pointer-events: none; opacity: 0.35; transition: opacity 0.3s;
+}
+@media (max-width: 1024px) {
+  .editing-timeline { display: none; }
+}
+.timeline-line {
+  position: absolute; left: 9px; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--text-muted), transparent);
+  border-left: 1px dashed rgba(255,255,255,0.15);
+}
+.timeline-playhead {
+  position: absolute; left: 0; top: 0; width: 100%; transform: translateY(0);
+  will-change: transform;
+}
+.playhead-triangle {
+  width: 0; height: 0; 
+  border-left: 10px solid transparent; border-right: 10px solid transparent; 
+  border-top: 12px solid #ef4444; margin: 0 auto;
+}
+.playhead-line {
+  width: 2px; height: 100vh; background: #ef4444; margin: 0 auto;
+  box-shadow: 0 0 10px rgba(239,68,68,0.8);
 }
 
 /* ===== VIDEO BG REMOVED ===== */

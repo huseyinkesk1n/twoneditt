@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initGradientShift();
     initSmoothScroll();
+    initTimelinePlayhead();
   }
 });
 
@@ -527,14 +528,44 @@ function initGlitch() {
 // 6. Preloader
 function initPreloader() {
   const preloader = document.getElementById('preloader');
+  const percentEl = document.getElementById('render-percent');
+  const fillEl = document.querySelector('.render-bar-fill');
   if (!preloader) return;
 
   document.body.style.overflow = 'hidden';
 
-  setTimeout(() => {
-    preloader.classList.add('preloader-hidden');
-    document.body.style.overflow = '';
-  }, 1200);
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += Math.floor(Math.random() * 15) + 5;
+    if (progress > 100) progress = 100;
+    
+    if (percentEl) percentEl.textContent = progress;
+    if (fillEl) fillEl.style.width = progress + '%';
+    
+    if (progress === 100) {
+      clearInterval(interval);
+      setTimeout(() => {
+        preloader.classList.add('preloader-hidden');
+        document.body.style.overflow = '';
+        setTimeout(() => preloader.style.display = 'none', 500);
+      }, 500);
+    }
+  }, 80);
+}
+
+// 7. Timeline Playhead
+function initTimelinePlayhead() {
+  const playhead = document.querySelector('.timeline-playhead');
+  if (!playhead) return;
+  
+  window.addEventListener('scroll', () => {
+    // Top limit is 0, bottom limit is scrollHeight - windowHeight
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+    // The playhead will travel down the viewport
+    const yPos = scrollPercent * window.innerHeight;
+    playhead.style.transform = `translateY(${yPos}px)`;
+  });
 }
 
 
