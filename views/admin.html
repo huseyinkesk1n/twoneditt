@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>twon Admin - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #0a0a0f; color: #fff; font-family: 'Inter', sans-serif; }
+    header { background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+    h1 { font-family: 'Space Grotesk', sans-serif; margin: 0; font-size: 24px; }
+    h1 span { background: linear-gradient(135deg, #a855f7, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .logout-btn { color: #ff4444; text-decoration: none; font-weight: 600; }
+    .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    .card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 12px; margin-bottom: 30px; }
+    .card h2 { margin-top: 0; margin-bottom: 20px; font-family: 'Space Grotesk', sans-serif; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+    .form-group { margin-bottom: 20px; }
+    .row { display: flex; gap: 20px; }
+    .col { flex: 1; }
+    label { display: block; margin-bottom: 8px; font-size: 14px; color: #ccc; }
+    .tr-label { color: #a855f7; font-weight: 600; }
+    .en-label { color: #06b6d4; font-weight: 600; }
+    input, textarea { width: 100%; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: #fff; font-family: 'Inter', sans-serif; box-sizing: border-box; outline: none; }
+    textarea { resize: vertical; min-height: 80px; }
+    input:focus, textarea:focus { border-color: #a855f7; }
+    .portfolio-item { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); position: relative; }
+    .remove-btn { position: absolute; top: 20px; right: 20px; background: #ff4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+    .add-btn { background: rgba(255,255,255,0.1); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-bottom: 20px; }
+    .save-btn { background: linear-gradient(135deg, #a855f7, #06b6d4); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; transition: opacity 0.3s; }
+    .save-btn:hover { opacity: 0.9; }
+    .status { text-align: center; margin-top: 15px; color: #22c55e; display: none; }
+    .message-card { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); position: relative; }
+    .message-card h3 { margin: 0 0 10px 0; font-size: 18px; color: #06b6d4; }
+    .message-card .meta { font-size: 13px; color: #94a3b8; margin-bottom: 15px; }
+    .message-card .msg-body { color: #f1f5f9; line-height: 1.5; font-size: 14px; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 6px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><span>twon</span> Admin</h1>
+    <a href="/logout" class="logout-btn">Çıkış Yap</a>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>Genel Ayarlar</h2>
+      <div class="row">
+        <div class="col">
+          <div class="form-group"><label class="tr-label">Ana Başlık (TR)</label><input type="text" id="heroTitle_tr"></div>
+          <div class="form-group"><label class="tr-label">Ana Açıklama (TR)</label><textarea id="heroDesc_tr"></textarea></div>
+          <div class="form-group"><label class="tr-label">Hakkımda Yazısı (TR)</label><textarea id="aboutText_tr"></textarea></div>
+        </div>
+        <div class="col">
+          <div class="form-group"><label class="en-label">Ana Başlık (EN)</label><input type="text" id="heroTitle_en"></div>
+          <div class="form-group"><label class="en-label">Ana Açıklama (EN)</label><textarea id="heroDesc_en"></textarea></div>
+          <div class="form-group"><label class="en-label">Hakkımda Yazısı (EN)</label><textarea id="aboutText_en"></textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Portfolyo Videoları</h2>
+      <div id="portfolio-list"></div>
+      <button class="add-btn" onclick="addPortfolioItem()">+ Yeni Video Ekle</button>
+    </div>
+
+    <div class="card">
+      <h2>Gelen Mesajlar</h2>
+      <div id="messages-list">Yükleniyor...</div>
+    </div>
+
+    <button class="save-btn" onclick="saveData()">Değişiklikleri Kaydet</button>
+    <div class="status" id="status-msg">Değişiklikler başarıyla kaydedildi!</div>
+  </div>
+
+  <script>
+    let siteData = { tr: {}, en: {} };
+
+    async function fetchData() {
+      const res = await fetch('/api/data');
+      siteData = await res.json();
+      
+      document.getElementById('heroTitle_tr').value = siteData.tr.siteData.heroTitle || '';
+      document.getElementById('heroDesc_tr').value = siteData.tr.siteData.heroDesc || '';
+      document.getElementById('aboutText_tr').value = siteData.tr.siteData.aboutText || '';
+      
+      document.getElementById('heroTitle_en').value = siteData.en.siteData.heroTitle || '';
+      document.getElementById('heroDesc_en').value = siteData.en.siteData.heroDesc || '';
+      document.getElementById('aboutText_en').value = siteData.en.siteData.aboutText || '';
+      
+      renderPortfolio();
+    }
+
+    function renderPortfolio() {
+      const list = document.getElementById('portfolio-list');
+      list.innerHTML = '';
+      siteData.tr.portfolio.forEach((item, index) => {
+        const itemEn = siteData.en.portfolio[index] || {};
+        const div = document.createElement('div');
+        div.className = 'portfolio-item';
+        div.innerHTML = `
+          <button class="remove-btn" onclick="removePortfolioItem(${index})">Sil</button>
+          
+          <div class="row">
+            <div class="col">
+              <div class="form-group"><label class="tr-label">Başlık (TR)</label><input type="text" value="${item.name}" onchange="updateItem('tr', ${index}, 'name', this.value)"></div>
+              <div class="form-group"><label class="tr-label">Açıklama (TR)</label><input type="text" value="${item.desc}" onchange="updateItem('tr', ${index}, 'desc', this.value)"></div>
+            </div>
+            <div class="col">
+              <div class="form-group"><label class="en-label">Başlık (EN)</label><input type="text" value="${itemEn.name || ''}" onchange="updateItem('en', ${index}, 'name', this.value)"></div>
+              <div class="form-group"><label class="en-label">Açıklama (EN)</label><input type="text" value="${itemEn.desc || ''}" onchange="updateItem('en', ${index}, 'desc', this.value)"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>YouTube Embed Linki (Her iki dil için de geçerli)</label>
+            <input type="text" value="${item.videoUrl}" onchange="updateSharedItem(${index}, 'videoUrl', this.value)">
+          </div>
+          <div class="form-group">
+            <label>Kapak Fotoğrafı URL (Her iki dil için de geçerli)</label>
+            <input type="text" value="${item.thumbUrl}" onchange="updateSharedItem(${index}, 'thumbUrl', this.value)">
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    function updateItem(lang, index, key, value) {
+      siteData[lang].portfolio[index][key] = value;
+    }
+
+    function updateSharedItem(index, key, value) {
+      siteData.tr.portfolio[index][key] = value;
+      siteData.en.portfolio[index][key] = value;
+    }
+
+    function removePortfolioItem(index) {
+      siteData.tr.portfolio.splice(index, 1);
+      siteData.en.portfolio.splice(index, 1);
+      renderPortfolio();
+    }
+
+    function addPortfolioItem() {
+      const id = Date.now().toString();
+      const sharedVideo = "https://www.youtube.com/embed/dQw4w9WgXcQ";
+      const sharedThumb = "assets/images/thumb1.png";
+
+      siteData.tr.portfolio.push({ id, name: "Yeni Video", desc: "Açıklama", videoUrl: sharedVideo, thumbUrl: sharedThumb });
+      siteData.en.portfolio.push({ id, name: "New Video", desc: "Description", videoUrl: sharedVideo, thumbUrl: sharedThumb });
+      renderPortfolio();
+    }
+
+    async function saveData() {
+      siteData.tr.siteData.heroTitle = document.getElementById('heroTitle_tr').value;
+      siteData.tr.siteData.heroDesc = document.getElementById('heroDesc_tr').value;
+      siteData.tr.siteData.aboutText = document.getElementById('aboutText_tr').value;
+      
+      siteData.en.siteData.heroTitle = document.getElementById('heroTitle_en').value;
+      siteData.en.siteData.heroDesc = document.getElementById('heroDesc_en').value;
+      siteData.en.siteData.aboutText = document.getElementById('aboutText_en').value;
+
+      const btn = document.querySelector('.save-btn');
+      btn.textContent = 'Kaydediliyor...';
+
+      const res = await fetch('/api/data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(siteData)
+      });
+
+      if (res.ok) {
+        btn.textContent = 'Değişiklikleri Kaydet';
+        const msg = document.getElementById('status-msg');
+        msg.style.display = 'block';
+        setTimeout(() => msg.style.display = 'none', 3000);
+      } else {
+        alert('Kaydetme hatası!');
+        btn.textContent = 'Değişiklikleri Kaydet';
+      }
+    }
+
+    async function fetchMessages() {
+      try {
+        const res = await fetch('/api/messages');
+        const messages = await res.json();
+        renderMessages(messages);
+      } catch(e) {
+        document.getElementById('messages-list').innerHTML = 'Mesajlar yüklenemedi.';
+      }
+    }
+
+    function renderMessages(messages) {
+      const list = document.getElementById('messages-list');
+      if (!messages || messages.length === 0) {
+        list.innerHTML = '<p style="color:#94a3b8">Henüz mesaj yok.</p>';
+        return;
+      }
+      list.innerHTML = messages.map(m => `
+        <div class="message-card">
+          <button class="remove-btn" onclick="deleteMessage('${m.id}')">Sil</button>
+          <h3>${m.subject || 'Konu Belirtilmemiş'}</h3>
+          <div class="meta">
+            <strong>Kimden:</strong> ${m.name || 'Bilinmiyor'} &lt;${m.email || 'E-posta yok'}&gt;<br>
+            <strong>Tarih:</strong> ${new Date(m.date).toLocaleString('tr-TR')}
+          </div>
+          <div class="msg-body">${m.message || ''}</div>
+        </div>
+      `).join('');
+    }
+
+    async function deleteMessage(id) {
+      if(!confirm('Bu mesajı silmek istediğinize emin misiniz?')) return;
+      await fetch('/api/messages/' + id, { method: 'DELETE' });
+      fetchMessages();
+    }
+
+    fetchData();
+    fetchMessages();
+  </script>
+</body>
+</html>

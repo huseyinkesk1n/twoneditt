@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>twon - Video Editor</title>
+  <meta name="description"
+    content="Profesyonel video editör twonedit'in portfolyo sitesi. YouTuber'lar için kurgu, renk düzeltme, motion graphics ve daha fazlası.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%238b5cf6'/><stop offset='100%25' stop-color='%2306b6d4'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='72' font-family='Arial, sans-serif' font-size='70' font-weight='bold' fill='white' text-anchor='middle'>t</text></svg>">
+  <link rel="stylesheet" href="css/style.css?v=5.0">
+</head>
+<body>
+  <!-- ===== NOISE OVERLAY ===== -->
+  <div id="noise-overlay"></div>
+  <!-- ===== DYNAMIC BG LAYER ===== -->
+  <div class="dynamic-bg-layer" id="dynamic-bg"></div>
+  <!-- ===== SCROLL PROGRESS BAR ===== -->
+  <div id="scroll-progress"></div>
+  <!-- ===== PAGE TRANSITION OVERLAY ===== -->
+  <div class="page-transition-overlay" id="page-transition"></div>
+  <!-- ===== PRELOADER ===== -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="spinner-ring"></div>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="#" class="nav-logo">twonedit</a>
+      <div class="lang-switch" id="lang-switch" data-active="en">
+        <div class="lang-slider"></div>
+        <button onclick="setLang('tr')" id="btn-tr">TR</button>
+        <button onclick="setLang('en')" id="btn-en" class="active">EN</button>
+      </div>
+    </div>
+    <div class="nav-links" id="nav-links">
+      <a href="#about" data-section="about" data-i18n="nav_about">Hakkımda</a>
+      <a href="#portfolio" data-section="portfolio" data-i18n="nav_portfolio">Portfolyo</a>
+      <a href="#services" data-section="services" data-i18n="nav_services">Hizmetler</a>
+      <a href="#clients" data-section="clients" data-i18n="nav_clients">Referanslar</a>
+      <a href="#contact" data-section="contact" data-i18n="nav_contact">İletişim</a>
+    </div>
+    <a href="#contact" class="nav-cta magnetic" data-i18n="nav_cta">Teklif Al</a>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-gradient g1"></div>
+      <div class="hero-gradient g2"></div>
+      <div class="hero-gradient g3"></div>
+      <canvas id="particles-canvas"></canvas>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span data-i18n="hero_badge">Yeni projeler için müsait</span>
+      </div>
+      <h1 class="hero-title" id="heroTitle">
+        Merhaba, ben <span class="gradient-text">twon!</span>
+      </h1>
+      <p class="hero-subtitle" id="heroDesc">
+        <span data-i18n="hero_desc_prefix">YouTuber'lar ve içerik üreticileri için profesyonel</span>
+        <span class="typing-wrapper" id="typing-text">
+          <span class="typing-current" id="typing-current"></span>
+          <span class="typing-cursor">|</span>
+        </span>
+        <span data-i18n="hero_desc_suffix">hizmetleri.</span>
+      </p>
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn-primary magnetic" data-i18n="hero_btn_primary">
+          ▶ Çalışmalarıma Göz At
+        </a>
+        <a href="#contact" class="btn-secondary magnetic" data-i18n="hero_btn_secondary">
+          ✉ İletişime Geç
+        </a>
+      </div>
+      <div class="hero-social-proof">
+        <div class="proof-badge">
+          <span class="proof-number">150+</span>
+          <span class="proof-label" data-i18n="stat1_label">Tamamlanan Proje</span>
+        </div>
+        <div class="proof-divider"></div>
+        <div class="proof-badge">
+          <span class="proof-number">30+</span>
+          <span class="proof-label" data-i18n="stat2_label">Mutlu Müşteri</span>
+        </div>
+        <div class="proof-divider"></div>
+        <div class="proof-badge">
+          <span class="proof-number">5+</span>
+          <span class="proof-label" data-i18n="stat3_label">Yıl Deneyim</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span data-i18n="hero_scroll">Aşağı Kaydır</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== WAVE DIVIDER ===== -->
+  <div class="section-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,0 C300,60 900,0 1200,60 L1200,60 L0,60 Z"></path>
+    </svg>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal-left">
+          <span class="section-label" data-i18n="about_label">Hakkımda</span>
+          <h2 class="section-title" data-i18n="about_title">Kreatif Vizyonunuzu<br>Hayata Geçiriyorum</h2>
+          <p id="aboutText">
+            Merhaba, ben <strong>twon</strong>. Profesyonel bir video editörüyüm ve YouTuber'larla
+            birlikte çalışarak onların hikayelerini etkileyici görsel anlatılara dönüştürüyorum.
+            Her projede sinematik bir bakış açısı, kusursuz renk uyumu ve dinamik kurgu ile
+            izleyicileri ekrana kilitleyen içerikler üretiyorum.
+          </p>
+          <p data-i18n="about_p2">
+            Tutkum, ham görüntüleri sanat eserine dönüştürmek. Her kesim, her geçiş ve her efekt
+            bir amaç taşır — hikayenizi en güçlü şekilde anlatmak.
+          </p>
+          <div class="about-stats">
+            <div class="stat-card reveal-scale parallax-element">
+              <div class="stat-icon"><svg viewBox="0 0 24 24">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg></div>
+              <div class="stat-number" data-count="150" data-suffix="+">0</div>
+              <div class="stat-label" data-i18n="stat1_label">Tamamlanan Proje</div>
+            </div>
+            <div class="stat-card reveal-scale parallax-element">
+              <div class="stat-icon"><svg viewBox="0 0 24 24">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg></div>
+              <div class="stat-number" data-count="30" data-suffix="+">0</div>
+              <div class="stat-label" data-i18n="stat2_label">Mutlu Müşteri</div>
+            </div>
+            <div class="stat-card reveal-scale parallax-element">
+              <div class="stat-icon"><svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg></div>
+              <div class="stat-number" data-count="5" data-suffix="+">0</div>
+              <div class="stat-label" data-i18n="stat3_label">Yıl Deneyim</div>
+            </div>
+          </div>
+          <div class="about-tools">
+            <span class="tool-tag">Adobe Premiere Pro</span>
+            <span class="tool-tag">After Effects</span>
+            <span class="tool-tag">DaVinci Resolve</span>
+            <span class="tool-tag">Photoshop</span>
+            <span class="tool-tag">Audition</span>
+            <span class="tool-tag">Cinema 4D</span>
+          </div>
+        </div>
+        <div class="about-visual reveal-right">
+          <div class="about-image-wrapper parallax-element">
+            <div class="about-image-inner">
+              <img src="assets/images/thumb1.png" alt="twon çalışma ortamı">
+            </div>
+          </div>
+          <div class="about-float-card card1">
+            <div class="float-icon">🎬</div>
+            <div class="float-label" data-i18n="about_float1_label">Uzmanlık</div>
+            <div class="float-value" data-i18n="about_float1_val">Video Kurgu</div>
+          </div>
+          <div class="about-float-card card2">
+            <div class="float-icon">🎨</div>
+            <div class="float-label" data-i18n="about_float2_label">Stil</div>
+            <div class="float-value" data-i18n="about_float2_val">Sinematik</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WAVE DIVIDER ===== -->
+  <div class="section-divider flip">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,0 C300,60 900,0 1200,60 L1200,60 L0,60 Z"></path>
+    </svg>
+  </div>
+
+  <!-- ===== PORTFOLIO ===== -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="port_label">Portfolyo</span>
+        <h2 class="section-title" data-i18n="port_title">Çalışmalarım</h2>
+        <p class="section-desc" data-i18n="port_desc">Projelerime göz atın!</p>
+      </div>
+
+
+      <div class="portfolio-grid" id="portfolio-grid">
+        <div class="skeleton-card" id="skeleton-1">
+          <div class="skeleton-thumb"></div>
+          <div class="skeleton-info">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+        <div class="skeleton-card" id="skeleton-2">
+          <div class="skeleton-thumb"></div>
+          <div class="skeleton-info">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+        <div class="skeleton-card" id="skeleton-3">
+          <div class="skeleton-thumb"></div>
+          <div class="skeleton-info">
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WAVE DIVIDER ===== -->
+  <div class="section-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,0 C300,60 900,0 1200,60 L1200,60 L0,60 Z"></path>
+    </svg>
+  </div>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="srv_label">Hizmetler</span>
+        <h2 class="section-title" data-i18n="srv_title">Neler Yapıyorum?</h2>
+        <p class="section-desc" data-i18n="srv_desc">Projeleriniz için sunduğum profesyonel hizmetler.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
+          <h3 class="service-title" data-i18n="srv1_title">Video Kurgu</h3>
+          <p class="service-desc" data-i18n="srv1_desc">Ham çekimlerinizi profesyonel, akıcı ve etkileyici videolara
+            dönüştürüyorum. Dinamik kesimler, geçişler ve tempo kontrolü.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
+          <h3 class="service-title" data-i18n="srv2_title">Color Grading</h3>
+          <p class="service-desc" data-i18n="srv2_desc">Videolarınıza sinematik bir atmosfer katıyorum. Profesyonel renk
+            düzeltme ve grading ile görsel bütünlük sağlıyorum.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg></div>
+          <h3 class="service-title" data-i18n="srv3_title">Motion Graphics</h3>
+          <p class="service-desc" data-i18n="srv3_desc">Intro, outro, alt başlıklar ve animasyonlu grafikler ile
+            videolarınıza profesyonel bir dokunuş ekliyorum.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <h3 class="service-title" data-i18n="srv4_title">Ses Tasarımı</h3>
+          <p class="service-desc" data-i18n="srv4_desc">Ses efektleri, müzik seçimi ve audio mixing ile videolarınızın
+            ses kalitesini en üst seviyeye çıkarıyorum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WAVE DIVIDER ===== -->
+  <div class="section-divider flip">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,0 C300,60 900,0 1200,60 L1200,60 L0,60 Z"></path>
+    </svg>
+  </div>
+
+  <!-- ===== CLIENTS ===== -->
+  <section id="clients">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="cli_label">Referanslar</span>
+        <h2 class="section-title" data-i18n="cli_title">Birlikte Çalıştıklarım</h2>
+        <p class="section-desc" data-i18n="cli_desc">Çalıştığım ve çalışmakta olduğum içerik üreticileri.</p>
+      </div>
+
+      <div class="clients-marquee reveal">
+        <div class="marquee-track">
+          <div class="client-item">🎮 GamerTR</div>
+          <div class="client-item">📸 LifestyleVlog</div>
+          <div class="client-item">🎵 MüzikStüdyo</div>
+          <div class="client-item">💻 TechReview</div>
+          <div class="client-item">🏋️ FitnessPro</div>
+          <div class="client-item">🍳 YemekKanalı</div>
+          <div class="client-item">✈️ GezginTV</div>
+          <div class="client-item">📚 EğitimPlus</div>
+          <!-- Duplicate for seamless loop -->
+          <div class="client-item">🎮 GamerTR</div>
+          <div class="client-item">📸 LifestyleVlog</div>
+          <div class="client-item">🎵 MüzikStüdyo</div>
+          <div class="client-item">💻 TechReview</div>
+          <div class="client-item">🏋️ FitnessPro</div>
+          <div class="client-item">🍳 YemekKanalı</div>
+          <div class="client-item">✈️ GezginTV</div>
+          <div class="client-item">📚 EğitimPlus</div>
+        </div>
+      </div>
+
+      <!-- Testimonial Carousel -->
+      <div class="testimonial-carousel reveal" id="testimonial-carousel">
+        <div class="testimonial-track" id="testimonial-track">
+          <div class="testimonial-card">
+            <p class="testimonial-quote">twon ile çalışmak bir ayrıcalık. Videolarıma kattığı sinematik hava izlenme
+              sayılarımı katladı. Profesyonelliği ve yaratıcılığı ile kesinlikle tavsiye ederim.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">A</div>
+              <div class="testimonial-info">
+                <div class="name">Anonymous</div>
+                <div class="role">YouTuber — 500K Abone</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">Müzik klibimizin edit ve kurgusunu twon'a emanet ettik ve sonuç muhteşem oldu.
+              Zamanında teslimat, mükemmel iletişim ve yaratıcı çözümler.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">S</div>
+              <div class="testimonial-info">
+                <div class="name">Anonymous</div>
+                <div class="role">Müzik Yapımcısı</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote">Markamızın tanıtım videosunu twon hazırladı. Son derece profesyonel bir iş
+              çıkardı. Kesinlikle tekrar çalışacağız.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">E</div>
+              <div class="testimonial-info">
+                <div class="name">Anonymous</div>
+                <div class="role">Marka Yöneticisi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-arrow" id="carousel-prev" aria-label="Önceki">◀</button>
+          <div class="carousel-dots" id="carousel-dots"></div>
+          <button class="carousel-arrow" id="carousel-next" aria-label="Sonraki">▶</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WAVE DIVIDER ===== -->
+  <div class="section-divider">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,0 C300,60 900,0 1200,60 L1200,60 L0,60 Z"></path>
+    </svg>
+  </div>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="faq_label">SSS</span>
+        <h2 class="section-title" data-i18n="faq_title">Sıkça Sorulan Sorular</h2>
+        <p class="section-desc" data-i18n="faq_desc">Aklınıza takılan soruların cevapları.</p>
+      </div>
+      <div class="faq-container" id="faq-container">
+        <!-- FAQ items injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WAVE DIVIDER ===== -->
+  <div class="section-divider flip">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,0 C300,60 900,0 1200,60 L1200,60 L0,60 Z"></path>
+    </svg>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-i18n="contact_label">İletişim</span>
+        <h2 class="section-title" data-i18n="contact_title">Projenizi Konuşalım</h2>
+        <p class="section-desc" data-i18n="contact_desc">Bir sonraki projeniz için benimle iletişime geçin.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <h3><span data-i18n="contact_h3_1">Hemen<br></span><span class="gradient-text" data-i18n="contact_h3_span">İletişime Geçin</span></h3>
+          <p data-i18n="contact_p">
+            Projeniz hakkında konuşmak, fiyat teklifi almak veya sadece merhaba demek isterseniz — formu doldurun veya aşağıdaki kanallardan bana ulaşın.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:hello@twon.com" class="contact-link">
+              <div class="contact-link-icon">✉</div>
+              <div>
+                <div style="font-weight:600;color:var(--text-primary);font-size:0.9rem">E-posta</div>
+                <div style="font-size:0.85rem">hello@twon.com</div>
+              </div>
+            </a>
+            <a href="#" class="contact-link">
+              <div class="contact-link-icon">💬</div>
+              <div>
+                <div style="font-weight:600;color:var(--text-primary);font-size:0.9rem">Discord</div>
+                <div style="font-size:0.85rem">twon#0001</div>
+              </div>
+            </a>
+            <a href="#" class="contact-link">
+              <div class="contact-link-icon">📸</div>
+              <div>
+                <div style="font-weight:600;color:var(--text-primary);font-size:0.9rem">Instagram</div>
+                <div style="font-size:0.85rem">@twon.edit</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-form-wrapper reveal-right">
+          <form id="contact-form" class="contact-form">
+            <div class="form-group floating">
+              <input type="text" id="name" required>
+              <label for="name" data-i18n="form_name">Adınız</label>
+            </div>
+            <div class="form-group floating">
+              <input type="email" id="email" required>
+              <label for="email" data-i18n="form_email">E-posta Adresiniz</label>
+            </div>
+            <div class="form-group floating">
+              <input type="text" id="subject" required>
+              <label for="subject" data-i18n="form_subj">Proje Konusu</label>
+            </div>
+            <div class="form-group floating">
+              <textarea id="message" required></textarea>
+              <label for="message" data-i18n="form_msg">Projeniz hakkında detaylı bilgi verin...</label>
+            </div>
+            <button type="submit" class="btn-submit magnetic">
+              <span data-i18n="form_btn">Mesaj Gönder →</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-socials">
+      <a href="#" aria-label="YouTube">▶</a>
+      <a href="#" aria-label="Instagram">📸</a>
+      <a href="#" aria-label="Twitter">𝕏</a>
+      <a href="#" aria-label="Discord">💬</a>
+    </div>
+    <p>© 2026 twon. Tüm hakları saklıdır.</p>
+  </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-close" id="modal-close">✕</div>
+      <div class="modal-video">
+        <iframe src="" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen style="width: 100%; height: 100%;"></iframe>
+      </div>
+      <div class="modal-details">
+        <h3></h3>
+        <p></p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="back-to-top" aria-label="Yukarı Çık">↑</button>
+
+  <!-- ===== TOAST CONTAINER ===== -->
+  <div id="toast-container"></div>
+
+  <script src="js/app.js?v=3.0"></script>
+  </body>
+
+</html>

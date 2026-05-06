@@ -1,0 +1,300 @@
+{
+  "tr": {
+    "siteData": {
+      "heroTitle": "Merhaba, ben twon!",
+      "heroDesc": "YouTuber'lar ve içerik üreticileri için profesyonel video kurgu, renk düzeltme ve motion graphics hizmetleri.",
+      "aboutText": "Selam, ben twon! Video düzenleme ve içerik üretimi dünyasında yaratıcı vizyonumu projelere yansıtıyorum. Amacım sıradan görüntüleri alıp onları izleyicinin gözünü alamayacağı sinematik hikayelere dönüştürmek."
+    },
+    "portfolio": [
+      {
+        "id": "1778105370220",
+        "name": "Yeni Video",
+        "desc": "Açıklama",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105371300",
+        "name": "Yeni Video",
+        "desc": "Açıklama",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105372317",
+        "name": "Yeni Video",
+        "desc": "Açıklama",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105373168",
+        "name": "Yeni Video",
+        "desc": "Açıklama",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105374077",
+        "name": "Yeni Video",
+        "desc": "Açıklama",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105375085",
+        "name": "Yeni Video",
+        "desc": "Açıklama",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105375866",
+        "name": "Yeni Video",
+        "desc": "Açıklama",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105376549",
+        "name": "Yeni Video",
+        "desc": "Açıklama",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105377387",
+        "name": "Yeni Video",
+        "desc": "Açıklama",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Revizyon hakkım var mı?",
+        "a": "Evet, projeye göre değişmekle birlikte genellikle 2 ücretsiz majör revizyon hakkınız bulunmaktadır."
+      },
+      {
+        "q": "Teslim süresi ortalama ne kadardır?",
+        "a": "Kısa YouTube videoları için 1-3 gün, daha kapsamlı kurgular için 3-7 gün arasında teslimat yapıyorum."
+      },
+      {
+        "q": "Hangi programları kullanıyorsunuz?",
+        "a": "Ağırlıklı olarak Adobe Premiere Pro, After Effects ve DaVinci Resolve kullanıyorum."
+      }
+    ],
+    "static": {
+      "nav_about": "Hakkımda",
+      "nav_portfolio": "Portfolyo",
+      "nav_services": "Hizmetler",
+      "nav_clients": "Referanslar",
+      "nav_contact": "İletişim",
+      "nav_cta": "Teklif Al",
+      "hero_badge": "Yeni projeler için müsait",
+      "hero_btn_primary": "▶ Çalışmalarıma Göz At",
+      "hero_btn_secondary": "✉ İletişime Geç",
+      "hero_scroll": "Aşağı Kaydır",
+      "hero_desc_prefix": "YouTuber'lar ve içerik üreticileri için profesyonel",
+      "hero_desc_suffix": "hizmetleri.",
+      "rot_1": "Video Kurgu",
+      "rot_2": "Motion Graphics",
+      "rot_3": "Color Grading",
+      "rot_4": "Ses Tasarımı",
+      "about_label": "Hakkımda",
+      "about_title": "Kreatif Vizyonunuzu<br>Hayata Geçiriyorum",
+      "about_p2": "Tutkum, ham görüntüleri sanat eserine dönüştürmek. Her kesim, her geçiş ve her efekt bir amaç taşır — hikayenizi en güçlü şekilde anlatmak.",
+      "stat1_label": "Tamamlanan Proje",
+      "stat2_label": "Mutlu Müşteri",
+      "stat3_label": "Yıl Deneyim",
+      "about_float1_label": "Uzmanlık",
+      "about_float1_val": "Video Kurgu",
+      "about_float2_label": "Stil",
+      "about_float2_val": "Sinematik",
+      "port_label": "Portfolyo",
+      "port_title": "Çalışmalarım",
+      "port_desc": "Projelerime göz atın!",
+      "port_filter_all": "Tümü",
+      "port_filter_edit": "Video Kurgu",
+      "port_filter_color": "Color Grading",
+      "port_filter_motion": "Motion Graphics",
+      "srv_label": "Hizmetler",
+      "srv_title": "Neler Yapıyorum?",
+      "srv_desc": "Projeleriniz için sunduğum profesyonel hizmetler.",
+      "srv1_title": "Video Kurgu",
+      "srv1_desc": "Ham çekimlerinizi profesyonel, akıcı ve etkileyici videolara dönüştürüyorum. Dinamik kesimler, geçişler ve tempo kontrolü.",
+      "srv2_title": "Color Grading",
+      "srv2_desc": "Videolarınıza sinematik bir atmosfer katıyorum. Profesyonel renk düzeltme ve grading ile görsel bütünlük sağlıyorum.",
+      "srv3_title": "Motion Graphics",
+      "srv3_desc": "Intro, outro, alt başlıklar ve animasyonlu grafikler ile videolarınıza profesyonel bir dokunuş ekliyorum.",
+      "srv4_title": "Ses Tasarımı",
+      "srv4_desc": "Ses efektleri, müzik seçimi ve audio mixing ile videolarınızın ses kalitesini en üst seviyeye çıkarıyorum.",
+      "cli_label": "Referanslar",
+      "cli_title": "Birlikte Çalıştıklarım",
+      "cli_desc": "Çalıştığım ve çalışmakta olduğum içerik üreticileri.",
+      "faq_label": "SSS",
+      "faq_title": "Sıkça Sorulan Sorular",
+      "faq_desc": "Aklınıza takılan soruların cevapları.",
+      "contact_label": "İletişim",
+      "contact_title": "Projenizi Konuşalım",
+      "contact_desc": "Bir sonraki projeniz için benimle iletişime geçin.",
+      "contact_h3_1": "Hemen<br>",
+      "contact_h3_span": "İletişime Geçin",
+      "contact_p": "Projeniz hakkında konuşmak, fiyat teklifi almak veya sadece merhaba demek isterseniz — formu doldurun veya aşağıdaki kanallardan bana ulaşın.",
+      "form_name": "Adınız",
+      "form_email": "E-posta Adresiniz",
+      "form_subj": "Proje Konusu",
+      "form_msg": "Projeniz hakkında detaylı bilgi verin...",
+      "form_btn": "Mesaj Gönder →"
+    }
+  },
+  "en": {
+    "siteData": {
+      "heroTitle": "Hello, I'm twon!",
+      "heroDesc": "Professional video editing, color grading, and motion graphics services for YouTubers and content creators.",
+      "aboutText": "Hi, I'm twon! I reflect my creative vision onto projects in the world of video editing and content creation. My goal is to take raw footage and turn it into cinematic stories that viewers can't take their eyes off."
+    },
+    "portfolio": [
+      {
+        "id": "1778105370220",
+        "name": "New Video",
+        "desc": "Description",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105371300",
+        "name": "New Video",
+        "desc": "Description",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105372317",
+        "name": "New Video",
+        "desc": "Description",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105373168",
+        "name": "New Video",
+        "desc": "Description",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105374077",
+        "name": "New Video",
+        "desc": "Description",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105375085",
+        "name": "New Video",
+        "desc": "Description",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105375866",
+        "name": "New Video",
+        "desc": "Description",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105376549",
+        "name": "New Video",
+        "desc": "Description",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      },
+      {
+        "id": "1778105377387",
+        "name": "New Video",
+        "desc": "Description",
+        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "thumbUrl": "assets/images/thumb1.png"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do I have revision rights?",
+        "a": "Yes, depending on the project, you generally have 2 free major revisions."
+      },
+      {
+        "q": "What is the average delivery time?",
+        "a": "I deliver short YouTube videos in 1-3 days, and more comprehensive edits in 3-7 days."
+      },
+      {
+        "q": "Which software do you use?",
+        "a": "I mainly use Adobe Premiere Pro, After Effects, and DaVinci Resolve."
+      }
+    ],
+    "static": {
+      "nav_about": "About",
+      "nav_portfolio": "Portfolio",
+      "nav_services": "Services",
+      "nav_clients": "Clients",
+      "nav_contact": "Contact",
+      "nav_cta": "Get Quote",
+      "hero_badge": "Available for new projects",
+      "hero_btn_primary": "▶ View My Work",
+      "hero_btn_secondary": "✉ Contact Me",
+      "hero_scroll": "Scroll Down",
+      "hero_desc_prefix": "Professional",
+      "hero_desc_suffix": "services for YouTubers and content creators.",
+      "rot_1": "Video Editing",
+      "rot_2": "Motion Graphics",
+      "rot_3": "Color Grading",
+      "rot_4": "Sound Design",
+      "about_label": "About Me",
+      "about_title": "Bringing Your Creative<br>Vision to Life",
+      "about_p2": "My passion is turning raw footage into a work of art. Every cut, every transition, and every effect has a purpose — to tell your story in the strongest way possible.",
+      "stat1_label": "Completed Projects",
+      "stat2_label": "Happy Clients",
+      "stat3_label": "Years Experience",
+      "about_float1_label": "Expertise",
+      "about_float1_val": "Video Editing",
+      "about_float2_label": "Style",
+      "about_float2_val": "Cinematic",
+      "port_label": "Portfolio",
+      "port_title": "My Work",
+      "port_desc": "Check out my projects!",
+      "port_filter_all": "All",
+      "port_filter_edit": "Video Editing",
+      "port_filter_color": "Color Grading",
+      "port_filter_motion": "Motion Graphics",
+      "srv_label": "Services",
+      "srv_title": "What I Do",
+      "srv_desc": "Professional services I offer for your projects.",
+      "srv1_title": "Video Editing",
+      "srv1_desc": "I transform your raw footage into professional, smooth, and engaging videos. Dynamic cuts, transitions, and pacing.",
+      "srv2_title": "Color Grading",
+      "srv2_desc": "I add a cinematic atmosphere to your videos. I ensure visual consistency with professional color correction and grading.",
+      "srv3_title": "Motion Graphics",
+      "srv3_desc": "I add a professional touch to your videos with intros, lower thirds, and animated graphics.",
+      "srv4_title": "Sound Design",
+      "srv4_desc": "I maximize the audio quality of your videos with sound effects, music selection, and audio mixing.",
+      "cli_label": "Clients",
+      "cli_title": "People I've Worked With",
+      "cli_desc": "Content creators and brands I work with.",
+      "faq_label": "FAQ",
+      "faq_title": "Frequently Asked Questions",
+      "faq_desc": "Answers to your questions.",
+      "contact_label": "Contact",
+      "contact_title": "Let's Talk About Your Project",
+      "contact_desc": "Get in touch with me for your next project.",
+      "contact_h3_1": "Get in Touch<br>",
+      "contact_h3_span": "Right Now",
+      "contact_p": "If you want to talk about your project, get a quote, or just say hello — fill out the form or reach out to me via the channels below.",
+      "form_name": "Your Name",
+      "form_email": "Your Email",
+      "form_subj": "Project Subject",
+      "form_msg": "Provide detailed information about your project...",
+      "form_btn": "Send Message →"
+    }
+  }
+}
