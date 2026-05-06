@@ -103,23 +103,23 @@
           
           <div class="row">
             <div class="col">
-              <div class="form-group"><label class="tr-label">Başlık (TR)</label><input type="text" value="${item.name}" onchange="updateItem('tr', ${index}, 'name', this.value)"></div>
-              <div class="form-group"><label class="tr-label">Açıklama (TR)</label><input type="text" value="${item.desc}" onchange="updateItem('tr', ${index}, 'desc', this.value)"></div>
+              <div class="form-group"><label class="tr-label">Başlık (TR)</label><input type="text" value="${item.name}" oninput="updateItem('tr', ${index}, 'name', this.value)"></div>
+              <div class="form-group"><label class="tr-label">Açıklama (TR)</label><input type="text" value="${item.desc}" oninput="updateItem('tr', ${index}, 'desc', this.value)"></div>
             </div>
             <div class="col">
-              <div class="form-group"><label class="en-label">Başlık (EN)</label><input type="text" value="${itemEn.name || ''}" onchange="updateItem('en', ${index}, 'name', this.value)"></div>
-              <div class="form-group"><label class="en-label">Açıklama (EN)</label><input type="text" value="${itemEn.desc || ''}" onchange="updateItem('en', ${index}, 'desc', this.value)"></div>
+              <div class="form-group"><label class="en-label">Başlık (EN)</label><input type="text" value="${itemEn.name || ''}" oninput="updateItem('en', ${index}, 'name', this.value)"></div>
+              <div class="form-group"><label class="en-label">Açıklama (EN)</label><input type="text" value="${itemEn.desc || ''}" oninput="updateItem('en', ${index}, 'desc', this.value)"></div>
             </div>
           </div>
 
           <div class="form-group">
             <label>YouTube Embed Linki (Her iki dil için de geçerli)</label>
-            <input type="text" value="${item.videoUrl}" onchange="updateSharedItem(${index}, 'videoUrl', this.value)">
+            <input type="text" value="${item.videoUrl}" oninput="updateSharedItem(${index}, 'videoUrl', this.value)">
           </div>
           <div class="form-group" style="display: flex; gap: 15px; align-items: flex-end;">
             <div style="flex: 1;">
               <label>Kapak Fotoğrafı URL (Her iki dil için de geçerli) - Dış link ekleyebilirsiniz</label>
-              <input type="text" value="${item.thumbUrl}" id="thumb-input-${index}" onchange="updateSharedItem(${index}, 'thumbUrl', this.value); document.getElementById('thumb-preview-${index}').src = this.value;">
+              <input type="text" value="${item.thumbUrl}" id="thumb-input-${index}" oninput="updateSharedItem(${index}, 'thumbUrl', this.value); document.getElementById('thumb-preview-${index}').src = this.value;">
             </div>
             <img id="thumb-preview-${index}" src="${item.thumbUrl}" alt="Kapak Önizleme" style="height: 44px; width: 80px; object-fit: cover; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2);">
           </div>
