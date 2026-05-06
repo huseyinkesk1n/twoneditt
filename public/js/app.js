@@ -430,6 +430,11 @@ function initTilt() {
 
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
 
+      if (card.classList.contains('service-card')) {
+        card.style.setProperty('--glow-x', `${x}px`);
+        card.style.setProperty('--glow-y', `${y}px`);
+      }
+
       if (glare) {
         glare.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
         glare.style.opacity = '1';
@@ -533,32 +538,48 @@ function initPreloader() {
 }
 
 
-// 8. Split Text Reveal
+// 8. Split Text Reveal (Upgraded to GSAP)
 function initSplitText() {
+  if (typeof gsap === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+
   const headings = document.querySelectorAll('.section-title');
   headings.forEach(heading => {
-    if (heading.querySelector('.split-word')) return;
+    if (heading.querySelector('.gsap-word')) return;
     let html = heading.innerHTML;
     // Replace <br> with space-padded <br> to split correctly
     html = html.replace(/<br\s*\/?>/gi, ' <br> ');
     const words = html.trim().split(/\s+/);
 
     heading.innerHTML = '';
-    let delayCounter = 0;
 
     words.forEach((word, i) => {
       if (word.toLowerCase() === '<br>') {
         heading.appendChild(document.createElement('br'));
       } else {
         const span = document.createElement('span');
-        span.className = 'split-word reveal';
+        span.className = 'gsap-word';
+        span.style.display = 'inline-block';
         const needsSpace = (i < words.length - 1) && (words[i + 1].toLowerCase() !== '<br>');
         span.innerHTML = word + (needsSpace ? '&nbsp;' : '');
-        span.style.transitionDelay = `${delayCounter * 0.1}s`;
         heading.appendChild(span);
-        delayCounter++;
       }
     });
+
+    gsap.fromTo(heading.querySelectorAll('.gsap-word'), 
+      { opacity: 0, y: 40, rotationX: -40, transformOrigin: "0% 50% -50" },
+      { 
+        opacity: 1, y: 0, rotationX: 0, 
+        duration: 0.8, 
+        stagger: 0.08, 
+        ease: "back.out(1.2)",
+        scrollTrigger: {
+          trigger: heading,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
   });
 }
 
