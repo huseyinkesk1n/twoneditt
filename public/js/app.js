@@ -9,7 +9,7 @@ if (window.location.hash) {
   history.replaceState(null, null, window.location.pathname + window.location.search);
 }
 
-let currentLang = localStorage.getItem('lang') || 'en';
+const currentLang = 'en';
 
 document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   initOdometerCount();
   initContactForm();
-  updateLangButtons();
 
   if (window.innerWidth > 768) {
 
@@ -44,23 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function setLang(lang) {
-  if (currentLang === lang) return;
-  currentLang = lang;
-  localStorage.setItem('lang', lang);
-  updateLangButtons();
-  fetchSiteData();
-  showToast(lang === 'tr' ? 'Türkçe seçildi' : 'English selected', 'info', 2000);
-}
-
-function updateLangButtons() {
-  const btnTr = document.getElementById('btn-tr');
-  const btnEn = document.getElementById('btn-en');
-  const langSwitch = document.getElementById('lang-switch');
-  if (btnTr) btnTr.classList.toggle('active', currentLang === 'tr');
-  if (btnEn) btnEn.classList.toggle('active', currentLang === 'en');
-  if (langSwitch) langSwitch.setAttribute('data-active', currentLang);
-}
 
 async function fetchSiteData() {
   try {
@@ -644,18 +626,14 @@ function initTypingEffect() {
   const container = document.getElementById('typing-current');
   if (!container) return;
 
-  const words = {
-    tr: ['Video Kurgu', 'Motion Graphics', 'Color Grading', 'Ses Tasarımı'],
-    en: ['Video Editing', 'Motion Graphics', 'Color Grading', 'Sound Design']
-  };
+  const words = ['Video Editing', 'Motion Graphics', 'Color Grading', 'Sound Design'];
 
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
 
   function type() {
-    const currentWords = words[currentLang] || words.en;
-    const currentWord = currentWords[wordIndex % currentWords.length];
+    const currentWord = words[wordIndex % words.length];
 
     if (isDeleting) {
       charIndex--;
