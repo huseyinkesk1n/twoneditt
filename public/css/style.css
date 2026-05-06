@@ -623,33 +623,6 @@ section { padding: 6rem 2rem; position: relative; }
   transition: width 0.2s ease-out;
 }
 
-/* ===== EDITING TIMELINE ===== */
-.editing-timeline {
-  position: fixed; top: 0; left: 30px; bottom: 0; width: 20px; z-index: 99;
-  pointer-events: none; opacity: 0.35; transition: opacity 0.3s;
-}
-@media (max-width: 1024px) {
-  .editing-timeline { display: none; }
-}
-.timeline-line {
-  position: absolute; left: 9px; top: 0; bottom: 0; width: 2px;
-  background: linear-gradient(to bottom, transparent, var(--text-muted), transparent);
-  border-left: 1px dashed rgba(255,255,255,0.15);
-}
-.timeline-playhead {
-  position: absolute; left: 0; top: 0; width: 100%; transform: translateY(0);
-  will-change: transform;
-}
-.playhead-triangle {
-  width: 0; height: 0; 
-  border-left: 10px solid transparent; border-right: 10px solid transparent; 
-  border-top: 12px solid #ef4444; margin: 0 auto;
-}
-.playhead-line {
-  width: 2px; height: 100vh; background: #ef4444; margin: 0 auto;
-  box-shadow: 0 0 10px rgba(239,68,68,0.8);
-}
-
 /* ===== VIDEO BG REMOVED ===== */
 
 /* ===== BG MARQUEE ===== */

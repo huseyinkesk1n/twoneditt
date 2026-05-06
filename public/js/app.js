@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initGradientShift();
     initSmoothScroll();
-    initTimelinePlayhead();
   }
 });
 
@@ -530,6 +529,7 @@ function initPreloader() {
   const preloader = document.getElementById('preloader');
   const percentEl = document.getElementById('render-percent');
   const fillEl = document.querySelector('.render-bar-fill');
+  const statusEl = document.getElementById('render-status');
   if (!preloader) return;
 
   document.body.style.overflow = 'hidden';
@@ -542,6 +542,12 @@ function initPreloader() {
     if (percentEl) percentEl.textContent = progress;
     if (fillEl) fillEl.style.width = progress + '%';
     
+    if (statusEl) {
+      if (progress < 40) statusEl.textContent = 'EDITING...';
+      else if (progress < 80) statusEl.textContent = 'RENDERING...';
+      else statusEl.textContent = 'UPLOADING...';
+    }
+    
     if (progress === 100) {
       clearInterval(interval);
       setTimeout(() => {
@@ -551,21 +557,6 @@ function initPreloader() {
       }, 500);
     }
   }, 80);
-}
-
-// 7. Timeline Playhead
-function initTimelinePlayhead() {
-  const playhead = document.querySelector('.timeline-playhead');
-  if (!playhead) return;
-  
-  window.addEventListener('scroll', () => {
-    // Top limit is 0, bottom limit is scrollHeight - windowHeight
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = Math.max(0, Math.min(1, window.scrollY / maxScroll));
-    // The playhead will travel down the viewport
-    const yPos = scrollPercent * window.innerHeight;
-    playhead.style.transform = `translateY(${yPos}px)`;
-  });
 }
 
 
