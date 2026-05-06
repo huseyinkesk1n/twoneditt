@@ -536,7 +536,7 @@ function initPreloader() {
 
   let progress = 0;
   const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 6) + 2; // Daha yavaş artış (2 ile 7 arası)
+    progress += Math.floor(Math.random() * 10) + 4; // Orta hız
     if (progress > 100) progress = 100;
     
     if (percentEl) percentEl.textContent = progress;
@@ -553,9 +553,9 @@ function initPreloader() {
         preloader.classList.add('preloader-hidden');
         document.body.style.overflow = '';
         setTimeout(() => preloader.style.display = 'none', 500);
-      }, 600); // 100% olduktan sonra ekranda biraz daha kalması için (500 -> 600)
+      }, 500); 
     }
-  }, 120); // Interval süresi uzatıldı (80 -> 120)
+  }, 90); // Süre biraz kısaltıldı
 }
 
 

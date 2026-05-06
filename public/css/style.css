@@ -618,8 +618,8 @@ section { padding: 6rem 2rem; position: relative; }
   border-radius: 4px; overflow: hidden; position: relative;
 }
 .render-bar-fill {
-  width: 0%; height: 100%; background: var(--gradient-hero);
-  box-shadow: 0 0 10px var(--accent-purple);
+  width: 0%; height: 100%; background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   transition: width 0.2s ease-out;
 }
 
