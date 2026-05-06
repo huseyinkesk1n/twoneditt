@@ -536,16 +536,15 @@ function initPreloader() {
 
   let progress = 0;
   const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 15) + 5;
+    progress += Math.floor(Math.random() * 6) + 2; // Daha yavaş artış (2 ile 7 arası)
     if (progress > 100) progress = 100;
     
     if (percentEl) percentEl.textContent = progress;
     if (fillEl) fillEl.style.width = progress + '%';
     
     if (statusEl) {
-      if (progress < 40) statusEl.textContent = 'EDITING...';
-      else if (progress < 80) statusEl.textContent = 'RENDERING...';
-      else statusEl.textContent = 'UPLOADING...';
+      if (progress < 50) statusEl.textContent = 'EDITING...';
+      else statusEl.textContent = 'RENDERING...';
     }
     
     if (progress === 100) {
@@ -554,9 +553,9 @@ function initPreloader() {
         preloader.classList.add('preloader-hidden');
         document.body.style.overflow = '';
         setTimeout(() => preloader.style.display = 'none', 500);
-      }, 500);
+      }, 600); // 100% olduktan sonra ekranda biraz daha kalması için (500 -> 600)
     }
-  }, 80);
+  }, 120); // Interval süresi uzatıldı (80 -> 120)
 }
 
 
