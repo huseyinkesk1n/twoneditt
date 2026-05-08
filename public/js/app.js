@@ -336,44 +336,28 @@ function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = form.querySelector('.btn-submit');
     const originalText = btn.innerHTML;
-    btn.innerHTML = 'Gönderiliyor...';
 
-    const data = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      subject: document.getElementById('subject').value,
-      message: document.getElementById('message').value
-    };
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
 
-    try {
-      const res = await fetch('/api/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      if (res.ok) {
-        btn.innerHTML = '✓ Mesajınız Gönderildi!';
-        btn.style.background = '#22c55e';
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.background = '';
-          form.reset();
-        }, 3000);
-      } else {
-        throw new Error('Hata');
-      }
-    } catch (err) {
-      btn.innerHTML = '✕ Hata Oluştu';
-      btn.style.background = '#ff4444';
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = '';
-      }, 3000);
-    }
+    const body = `Hi, I'm ${name} (${email}).%0D%0A%0D%0A${message}`;
+    const mailtoLink = `mailto:twonedit@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    
+    window.location.href = mailtoLink;
+
+    btn.innerHTML = '✓ Opening email client...';
+    btn.style.background = '#22c55e';
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.style.background = '';
+      form.reset();
+    }, 3000);
   });
 }
 

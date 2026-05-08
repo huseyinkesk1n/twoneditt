@@ -789,6 +789,37 @@ section { padding: 6rem 2rem; position: relative; }
   -webkit-text-fill-color: transparent; background-clip: text;
 }
 
+/* ===== WORKFLOW ===== */
+.workflow-grid {
+  display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap;
+}
+.workflow-step {
+  flex: 1; min-width: 180px; max-width: 240px; text-align: center;
+  padding: 2rem 1.5rem; border-radius: 20px;
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  position: relative; transition: var(--transition);
+}
+.workflow-step:hover { border-color: rgba(139,92,246,0.3); transform: translateY(-6px); }
+.workflow-number {
+  font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700;
+  color: var(--accent-purple); letter-spacing: 2px; margin-bottom: 0.5rem;
+}
+.workflow-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.workflow-step h3 {
+  font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;
+}
+.workflow-step p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+.workflow-connector {
+  width: 40px; height: 2px;
+  background: linear-gradient(to right, var(--accent-purple), var(--accent-cyan));
+  opacity: 0.4; flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .workflow-grid { flex-direction: column; gap: 1rem; }
+  .workflow-connector { width: 2px; height: 30px; }
+  .workflow-step { max-width: 100%; }
+}
+
 /* ===== STAGGERED GRID (8) ===== */
 .portfolio-card.stagger-enter {
   opacity: 0; transform: translateY(30px) scale(0.95);
