@@ -520,22 +520,22 @@ function initPreloader() {
   const interval = setInterval(() => {
     progress += Math.floor(Math.random() * 10) + 4; // Orta hız
     if (progress > 100) progress = 100;
-    
+
     if (percentEl) percentEl.textContent = progress;
     if (fillEl) fillEl.style.width = progress + '%';
-    
+
     if (statusEl) {
       if (progress < 50) statusEl.textContent = 'EDITING...';
       else statusEl.textContent = 'RENDERING...';
     }
-    
+
     if (progress === 100) {
       clearInterval(interval);
       setTimeout(() => {
         preloader.classList.add('preloader-hidden');
         document.body.style.overflow = '';
         setTimeout(() => preloader.style.display = 'none', 500);
-      }, 500); 
+      }, 500);
     }
   }, 90); // Süre biraz kısaltıldı
 }
@@ -569,12 +569,12 @@ function initSplitText() {
       }
     });
 
-    gsap.fromTo(heading.querySelectorAll('.gsap-word'), 
+    gsap.fromTo(heading.querySelectorAll('.gsap-word'),
       { opacity: 0, y: 40, rotationX: -40, transformOrigin: "0% 50% -50" },
-      { 
-        opacity: 1, y: 0, rotationX: 0, 
-        duration: 0.8, 
-        stagger: 0.08, 
+      {
+        opacity: 1, y: 0, rotationX: 0,
+        duration: 0.8,
+        stagger: 0.08,
         ease: "back.out(1.2)",
         scrollTrigger: {
           trigger: heading,

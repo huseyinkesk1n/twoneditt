@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>twon - Video Editor</title>
   <meta name="description"
-    content="Profesyonel video editör twonedit'in portfolyo sitesi. YouTuber'lar için kurgu, renk düzeltme, motion graphics ve daha fazlası.">
+    content="Professional video editor twonedit's portfolio. Video editing, color grading, motion graphics and more for YouTubers and content creators.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%238b5cf6'/><stop offset='100%25' stop-color='%2306b6d4'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='72' font-family='Arial, sans-serif' font-size='70' font-weight='bold' fill='white' text-anchor='middle'>t</text></svg>">
   <link rel="stylesheet" href="css/style.css?v=5.0">
 </head>
@@ -16,6 +16,7 @@
   <!-- ===== DYNAMIC BG LAYER ===== -->
   <div class="dynamic-bg-layer" id="dynamic-bg"></div>
   <!-- ===== SCROLL PROGRESS BAR ===== -->
+  <div id="scroll-progress"></div>
   <!-- ===== PAGE TRANSITION OVERLAY ===== -->
   <div class="page-transition-overlay" id="page-transition"></div>
 
@@ -35,13 +36,13 @@
       <a href="#" class="nav-logo">twonedit</a>
     </div>
     <div class="nav-links" id="nav-links">
-      <a href="#about" data-section="about" data-i18n="nav_about">Hakkımda</a>
-      <a href="#portfolio" data-section="portfolio" data-i18n="nav_portfolio">Portfolyo</a>
-      <a href="#services" data-section="services" data-i18n="nav_services">Hizmetler</a>
-      <a href="#clients" data-section="clients" data-i18n="nav_clients">Referanslar</a>
-      <a href="#contact" data-section="contact" data-i18n="nav_contact">İletişim</a>
+      <a href="#about" data-section="about" data-i18n="nav_about">About</a>
+      <a href="#portfolio" data-section="portfolio" data-i18n="nav_portfolio">Portfolio</a>
+      <a href="#services" data-section="services" data-i18n="nav_services">Services</a>
+      <a href="#clients" data-section="clients" data-i18n="nav_clients">Clients</a>
+      <a href="#contact" data-section="contact" data-i18n="nav_contact">Contact</a>
     </div>
-    <a href="#contact" class="nav-cta magnetic" data-i18n="nav_cta">Teklif Al</a>
+    <a href="#contact" class="nav-cta magnetic" data-i18n="nav_cta">Get Quote</a>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
@@ -60,46 +61,46 @@
     <div class="hero-content">
       <div class="hero-badge">
         <span class="dot"></span>
-        <span data-i18n="hero_badge">Yeni projeler için müsait</span>
+        <span data-i18n="hero_badge">Available for new projects</span>
       </div>
       <h1 class="hero-title" id="heroTitle">
-        Merhaba, ben <span class="gradient-text">twon!</span>
+        Hello, I'm <span class="gradient-text">twon!</span>
       </h1>
       <p class="hero-subtitle" id="heroDesc">
-        <span data-i18n="hero_desc_prefix">YouTuber'lar ve içerik üreticileri için profesyonel</span>
+        <span data-i18n="hero_desc_prefix">Professional</span>
         <span class="typing-wrapper" id="typing-text">
           <span class="typing-current" id="typing-current"></span>
           <span class="typing-cursor">|</span>
         </span>
-        <span data-i18n="hero_desc_suffix">hizmetleri.</span>
+        <span data-i18n="hero_desc_suffix">services for YouTubers and content creators.</span>
       </p>
       <div class="hero-buttons">
         <a href="#portfolio" class="btn-primary magnetic" data-i18n="hero_btn_primary">
-          ▶ Çalışmalarıma Göz At
+          ▶ View My Work
         </a>
         <a href="#contact" class="btn-secondary magnetic" data-i18n="hero_btn_secondary">
-          ✉ İletişime Geç
+          ✉ Contact Me
         </a>
       </div>
       <div class="hero-social-proof">
         <div class="proof-badge">
           <span class="proof-number">150+</span>
-          <span class="proof-label" data-i18n="stat1_label">Tamamlanan Proje</span>
+          <span class="proof-label" data-i18n="stat1_label">Completed Projects</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-badge">
           <span class="proof-number">30+</span>
-          <span class="proof-label" data-i18n="stat2_label">Mutlu Müşteri</span>
+          <span class="proof-label" data-i18n="stat2_label">Happy Clients</span>
         </div>
         <div class="proof-divider"></div>
         <div class="proof-badge">
           <span class="proof-number">5+</span>
-          <span class="proof-label" data-i18n="stat3_label">Yıl Deneyim</span>
+          <span class="proof-label" data-i18n="stat3_label">Years Experience</span>
         </div>
       </div>
     </div>
     <div class="hero-scroll">
-      <span data-i18n="hero_scroll">Aşağı Kaydır</span>
+      <span data-i18n="hero_scroll">Scroll Down</span>
       <div class="scroll-line"></div>
     </div>
   </section>
@@ -116,17 +117,17 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-text reveal-left">
-          <span class="section-label" data-i18n="about_label">Hakkımda</span>
-          <h2 class="section-title" data-i18n="about_title">Kreatif Vizyonunuzu<br>Hayata Geçiriyorum</h2>
+          <span class="section-label" data-i18n="about_label">About Me</span>
+          <h2 class="section-title" data-i18n="about_title">Bringing Your Creative<br>Vision to Life</h2>
           <p id="aboutText">
-            Merhaba, ben <strong>twon</strong>. Profesyonel bir video editörüyüm ve YouTuber'larla
-            birlikte çalışarak onların hikayelerini etkileyici görsel anlatılara dönüştürüyorum.
-            Her projede sinematik bir bakış açısı, kusursuz renk uyumu ve dinamik kurgu ile
-            izleyicileri ekrana kilitleyen içerikler üretiyorum.
+            Hi, I'm <strong>twon</strong>. I'm a professional video editor working with YouTubers
+            to transform their stories into compelling visual narratives.
+            With a cinematic perspective, flawless color harmony, and dynamic editing,
+            I create content that keeps viewers glued to the screen.
           </p>
           <p data-i18n="about_p2">
-            Tutkum, ham görüntüleri sanat eserine dönüştürmek. Her kesim, her geçiş ve her efekt
-            bir amaç taşır — hikayenizi en güçlü şekilde anlatmak.
+            My passion is turning raw footage into a work of art. Every cut, every transition,
+            and every effect has a purpose — to tell your story in the strongest way possible.
           </p>
           <div class="about-stats">
             <div class="stat-card reveal-scale parallax-element">
@@ -134,7 +135,7 @@
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                 </svg></div>
               <div class="stat-number" data-count="150" data-suffix="+">0</div>
-              <div class="stat-label" data-i18n="stat1_label">Tamamlanan Proje</div>
+              <div class="stat-label" data-i18n="stat1_label">Completed Projects</div>
             </div>
             <div class="stat-card reveal-scale parallax-element">
               <div class="stat-icon"><svg viewBox="0 0 24 24">
@@ -144,7 +145,7 @@
                   <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg></div>
               <div class="stat-number" data-count="30" data-suffix="+">0</div>
-              <div class="stat-label" data-i18n="stat2_label">Mutlu Müşteri</div>
+              <div class="stat-label" data-i18n="stat2_label">Happy Clients</div>
             </div>
             <div class="stat-card reveal-scale parallax-element">
               <div class="stat-icon"><svg viewBox="0 0 24 24">
@@ -152,7 +153,7 @@
                   <polyline points="12 6 12 12 16 14" />
                 </svg></div>
               <div class="stat-number" data-count="5" data-suffix="+">0</div>
-              <div class="stat-label" data-i18n="stat3_label">Yıl Deneyim</div>
+              <div class="stat-label" data-i18n="stat3_label">Years Experience</div>
             </div>
           </div>
           <div class="about-tools">
@@ -172,13 +173,13 @@
           </div>
           <div class="about-float-card card1">
             <div class="float-icon">🎬</div>
-            <div class="float-label" data-i18n="about_float1_label">Uzmanlık</div>
-            <div class="float-value" data-i18n="about_float1_val">Video Kurgu</div>
+            <div class="float-label" data-i18n="about_float1_label">Expertise</div>
+            <div class="float-value" data-i18n="about_float1_val">Video Editing</div>
           </div>
           <div class="about-float-card card2">
             <div class="float-icon">🎨</div>
-            <div class="float-label" data-i18n="about_float2_label">Stil</div>
-            <div class="float-value" data-i18n="about_float2_val">Sinematik</div>
+            <div class="float-label" data-i18n="about_float2_label">Style</div>
+            <div class="float-value" data-i18n="about_float2_val">Cinematic</div>
           </div>
         </div>
       </div>
@@ -196,9 +197,9 @@
   <section id="portfolio">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-i18n="port_label">Portfolyo</span>
-        <h2 class="section-title" data-i18n="port_title">Çalışmalarım</h2>
-        <p class="section-desc" data-i18n="port_desc">Projelerime göz atın!</p>
+        <span class="section-label" data-i18n="port_label">Portfolio</span>
+        <h2 class="section-title" data-i18n="port_title">My Work</h2>
+        <p class="section-desc" data-i18n="port_desc">Check out my projects!</p>
       </div>
 
 
@@ -239,35 +240,31 @@
   <section id="services">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-i18n="srv_label">Hizmetler</span>
-        <h2 class="section-title" data-i18n="srv_title">Neler Yapıyorum?</h2>
-        <p class="section-desc" data-i18n="srv_desc">Projeleriniz için sunduğum profesyonel hizmetler.</p>
+        <span class="section-label" data-i18n="srv_label">Services</span>
+        <h2 class="section-title" data-i18n="srv_title">What I Do</h2>
+        <p class="section-desc" data-i18n="srv_desc">Professional services I offer for your projects.</p>
       </div>
 
       <div class="services-grid">
         <div class="service-card reveal">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
-          <h3 class="service-title" data-i18n="srv1_title">Video Kurgu</h3>
-          <p class="service-desc" data-i18n="srv1_desc">Ham çekimlerinizi profesyonel, akıcı ve etkileyici videolara
-            dönüştürüyorum. Dinamik kesimler, geçişler ve tempo kontrolü.</p>
+          <h3 class="service-title" data-i18n="srv1_title">Video Editing</h3>
+          <p class="service-desc" data-i18n="srv1_desc">I transform your raw footage into professional, smooth, and engaging videos with dynamic cuts, transitions, and pacing.</p>
         </div>
         <div class="service-card reveal">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
           <h3 class="service-title" data-i18n="srv2_title">Color Grading</h3>
-          <p class="service-desc" data-i18n="srv2_desc">Videolarınıza sinematik bir atmosfer katıyorum. Profesyonel renk
-            düzeltme ve grading ile görsel bütünlük sağlıyorum.</p>
+          <p class="service-desc" data-i18n="srv2_desc">I add a cinematic atmosphere to your videos with professional color correction and grading for visual consistency.</p>
         </div>
         <div class="service-card reveal">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg></div>
           <h3 class="service-title" data-i18n="srv3_title">Motion Graphics</h3>
-          <p class="service-desc" data-i18n="srv3_desc">Intro, outro, alt başlıklar ve animasyonlu grafikler ile
-            videolarınıza profesyonel bir dokunuş ekliyorum.</p>
+          <p class="service-desc" data-i18n="srv3_desc">I add a professional touch to your videos with intros, lower thirds, and animated graphics.</p>
         </div>
         <div class="service-card reveal">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-          <h3 class="service-title" data-i18n="srv4_title">Ses Tasarımı</h3>
-          <p class="service-desc" data-i18n="srv4_desc">Ses efektleri, müzik seçimi ve audio mixing ile videolarınızın
-            ses kalitesini en üst seviyeye çıkarıyorum.</p>
+          <h3 class="service-title" data-i18n="srv4_title">Sound Design</h3>
+          <p class="service-desc" data-i18n="srv4_desc">I maximize the audio quality of your videos with sound effects, music selection, and audio mixing.</p>
         </div>
       </div>
     </div>
@@ -284,9 +281,9 @@
   <section id="clients">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-i18n="cli_label">Referanslar</span>
-        <h2 class="section-title" data-i18n="cli_title">Birlikte Çalıştıklarım</h2>
-        <p class="section-desc" data-i18n="cli_desc">Çalıştığım ve çalışmakta olduğum içerik üreticileri.</p>
+        <span class="section-label" data-i18n="cli_label">Clients</span>
+        <h2 class="section-title" data-i18n="cli_title">People I've Worked With</h2>
+        <p class="section-desc" data-i18n="cli_desc">Content creators and brands I work with.</p>
       </div>
 
       <div class="clients-marquee reveal">
@@ -368,9 +365,9 @@
   <section id="faq">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-i18n="faq_label">SSS</span>
-        <h2 class="section-title" data-i18n="faq_title">Sıkça Sorulan Sorular</h2>
-        <p class="section-desc" data-i18n="faq_desc">Aklınıza takılan soruların cevapları.</p>
+        <span class="section-label" data-i18n="faq_label">FAQ</span>
+        <h2 class="section-title" data-i18n="faq_title">Frequently Asked Questions</h2>
+        <p class="section-desc" data-i18n="faq_desc">Answers to your questions.</p>
       </div>
       <div class="faq-container" id="faq-container">
         <!-- FAQ items injected by JS -->
@@ -389,16 +386,16 @@
   <section id="contact">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-i18n="contact_label">İletişim</span>
-        <h2 class="section-title" data-i18n="contact_title">Projenizi Konuşalım</h2>
-        <p class="section-desc" data-i18n="contact_desc">Bir sonraki projeniz için benimle iletişime geçin.</p>
+        <span class="section-label" data-i18n="contact_label">Contact</span>
+        <h2 class="section-title" data-i18n="contact_title">Let's Talk About Your Project</h2>
+        <p class="section-desc" data-i18n="contact_desc">Get in touch with me for your next project.</p>
       </div>
 
       <div class="contact-grid">
         <div class="contact-info reveal-left">
-          <h3><span data-i18n="contact_h3_1">Hemen<br></span><span class="gradient-text" data-i18n="contact_h3_span">İletişime Geçin</span></h3>
+          <h3><span data-i18n="contact_h3_1">Get in Touch<br></span><span class="gradient-text" data-i18n="contact_h3_span">Right Now</span></h3>
           <p data-i18n="contact_p">
-            Projeniz hakkında konuşmak, fiyat teklifi almak veya sadece merhaba demek isterseniz — formu doldurun veya aşağıdaki kanallardan bana ulaşın.
+            If you want to talk about your project, get a quote, or just say hello — fill out the form or reach out to me via the channels below.
           </p>
           <div class="contact-links">
             <a href="mailto:twonedit@gmail.com" class="contact-link">
@@ -422,22 +419,22 @@
           <form id="contact-form" class="contact-form">
             <div class="form-group floating">
               <input type="text" id="name" required>
-              <label for="name" data-i18n="form_name">Adınız</label>
+              <label for="name" data-i18n="form_name">Your Name</label>
             </div>
             <div class="form-group floating">
               <input type="email" id="email" required>
-              <label for="email" data-i18n="form_email">E-posta Adresiniz</label>
+              <label for="email" data-i18n="form_email">Your Email</label>
             </div>
             <div class="form-group floating">
               <input type="text" id="subject" required>
-              <label for="subject" data-i18n="form_subj">Proje Konusu</label>
+              <label for="subject" data-i18n="form_subj">Project Subject</label>
             </div>
             <div class="form-group floating">
               <textarea id="message" required></textarea>
-              <label for="message" data-i18n="form_msg">Projeniz hakkında detaylı bilgi verin...</label>
+              <label for="message" data-i18n="form_msg">Provide details about your project...</label>
             </div>
             <button type="submit" class="btn-submit magnetic">
-              <span data-i18n="form_btn">Mesaj Gönder →</span>
+              <span data-i18n="form_btn">Send Message →</span>
             </button>
           </form>
         </div>
@@ -452,7 +449,7 @@
       <a href="#" aria-label="Twitter">𝕏</a>
       <a href="#" aria-label="Discord">💬</a>
     </div>
-    <p>© 2026 twon. Tüm hakları saklıdır.</p>
+    <p>© 2026 twonedit. All rights reserved.</p>
   </footer>
 
   <!-- ===== MODAL ===== -->
